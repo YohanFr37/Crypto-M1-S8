@@ -35,8 +35,24 @@ def bezout(a, p,i):
         fichier.write("Reste : "+ str(R0)+"\n")
         fichier.write("\n")
 
-def main ():    
-    for i in range(100):
-        c = random.getrandbits(1024)
-        bezout(c,p,i+1)
+
+def puissance(g,a):
+    while(a>1):
+        if(a%2==0):
+            print("2 g ",g," a ", a)
+            g = g*2
+            a = a//2
+        else:
+            print("3 g ",g," a ", a)
+            #puissance(g+1,(a-1)//2)
+            g = g*2+1
+            a = a//2
+    print("1 g ",g," a ", a)
+    return g
+def main ():  
+    c = random.getrandbits(1024)  
+    #for i in range(100):
+    #    c = random.getrandbits(1024)
+    #    bezout(c,p,i+1)
+    puissance(2,c)
 main()
