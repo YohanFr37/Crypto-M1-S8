@@ -10,6 +10,7 @@ fichierKeyGen = open("KeyGen.txt", "w")
 fichierEncrypt = open("Encrypt.txt", "w")
 fichierDecrypt = open("Decrypt.txt", "w")
 fichierHomomorphique = open("Homomorphique.txt", "w")
+fichierTest = open("test.txt", "w")
 
 # HexaNumber = 2^894 * PI
 HexaNumber = 0XFFFFFFFFFFFFFFFFC90FDAA22168C234C4C6628B80DC1CD129024E088A67CC74020BBEA63B139B22514A08798E3404DDEF9519B3CD3A431B302B0A6DF25F14374FE1356D6D51C245E485B576625E7EC6F44C42E9A637ED6B0BFF5CB6F406B7EDEE386BFB5A899FA5AE9F24117C4B1FE649286651ECE65381FFFFFFFFFFFFFFFF
@@ -22,6 +23,7 @@ Ks = 0
 Iteration = 0
 
 # Qestion 3 : Théorème de Bezout (Euclide Etendue)
+
 def Euclid(a, p, ecriture):
     U0 = 1
     U1 = 0
@@ -46,6 +48,16 @@ def Euclid(a, p, ecriture):
         fichierEuclid.write("p : "+ str(R1) +"\n")
         fichierEuclid.write("v : "+ str(V0) +"\n")
         fichierEuclid.write("Reste : "+ str(R0)+"\n\n")
+
+    if(ecriture and Iteration < 5):               # Enregistrement des 5 premiers tests
+        
+        fichierTest.write("ITERATION n° : "+ str(Iteration+1) +"\n\n")
+        fichierTest.write("Fonction Euclid : "+ "\n\n")
+        fichierTest.write("a : "+ str(a) +"\n")
+        fichierTest.write("u : "+ str(U0) +"\n")
+        fichierTest.write("p : "+ str(R1) +"\n")
+        fichierTest.write("v : "+ str(V0) +"\n")
+        fichierTest.write("Reste : "+ str(R0)+"\n\n")
     return U0
 
 
@@ -63,6 +75,12 @@ def ExpMod(g,a,ecriture):
         fichierExpMod.write("A : "+ str(g) +"\n")
         fichierExpMod.write("a : "+ str(a) +"\n")
         fichierExpMod.write("p : "+ str(p) +"\n\n")
+    
+    if(ecriture and Iteration < 5):               # Enregistrement des 5 premiers tests
+        fichierTest.write("Fonction ExpMod : "+ "\n\n")
+        fichierTest.write("A : "+ str(g) +"\n")
+        fichierTest.write("a : "+ str(a) +"\n")
+        fichierTest.write("p : "+ str(p) +"\n\n")
     return g
 
 
@@ -74,10 +92,16 @@ def Keygen(g,p,x,public):                           # X ≡ g^x mod p
         if(Iteration < 100):                        # Évite d'écrire dans le fichier lors de l'utilisation de la fonction Homomorphique()
             fichierKeyGen.write("g : "+ str(g) +"\n")
             fichierKeyGen.write("X : "+ str(ExpMod(g,x,ecriture)) +"\n")
+        if(Iteration < 5):                          # Enregistrement des 5 premiers tests
+            fichierTest.write("Fonction Keygen : "+ "\n\n")
+            fichierTest.write("g : "+ str(g) +"\n")
+            fichierTest.write("X : "+ str(ExpMod(g,x,ecriture)) +"\n")
         return [g,p,ExpMod(g,x,ecriture)]           # Données public dans la génération de clef g, p et X
     else :
         if(Iteration < 100):                        # Évite d'écrire dans le fichier lors de l'utilisation de la fonction Homomorphique()
             fichierKeyGen.write("x : "+ str(x) +"\n\n")
+        if(Iteration < 5):                          # Enregistrement des 5 premiers tests
+            fichierTest.write("x : "+ str(x) +"\n\n")
         return x                                    # Donnée gardé secrète : x
 
 def Encrypt(X,g,p):
@@ -92,7 +116,17 @@ def Encrypt(X,g,p):
 
         fichierDecrypt.write("m : "+ str(m) +"\n")
         fichierDecrypt.write("B : "+ str(m*y%p) +"\n")    
-        fichierDecrypt.write("C : "+ str(ExpMod(g,r,ecriture)) +"\n")
+        fichierDecrypt.write("C : "+ str(ExpMod(g,r,ecriture)) +"\n")    
+    if(Iteration < 5):                            # Enregistrement des 5 premiers tests
+        fichierTest.write("Fonction Encrypt : "+ "\n\n")
+        fichierTest.write("m : "+ str(m) +"\n")
+        fichierTest.write("r : "+ str(r) +"\n")
+        fichierTest.write("y : "+ str(y) +"\n\n")
+
+        fichierTest.write("Fonction Decrypt : "+ "\n\n")
+        fichierTest.write("m : "+ str(m) +"\n")
+        fichierTest.write("B : "+ str(m*y%p) +"\n")    
+        fichierTest.write("C : "+ str(ExpMod(g,r,ecriture)) +"\n")
     return [m*y%p,ExpMod(g,r,ecriture)]             # Retourne les valeurs de B et de C
 
 def Decrypt(B,C,x):
@@ -102,6 +136,8 @@ def Decrypt(B,C,x):
     m2 = C*DInv%p                                   # C * D^-1 mod p
     if(Iteration < 100):                            # Évite d'écrire dans le fichier lors de l'utilisation de la fonction Homomorphique()
         fichierDecrypt.write("m' : "+ str(m2) +"\n\n")
+    if(Iteration < 5):                              # Enregistrement des 5 premiers tests
+        fichierTest.write("m' : "+ str(m2) +"\n\n")
     return m2
 
 
@@ -136,6 +172,18 @@ def Homomorphique():
     fichierHomomorphique.write("m (Decrypt) : "+ str(mVerif) +"\n\n")
     fichierHomomorphique.write("B = B1*B2 : "+ str(B) +"\n")
     fichierHomomorphique.write("C = C1*m2 : "+ str(C) +"\n")
+    if(Iteration < 5):                              # Enregistrement des 5 premiers tests
+        fichierTest.write("Fonction Homomorphique : "+ "\n\n")
+        fichierTest.write("m1 : "+ str(m1) +"\n")
+        fichierTest.write("B1 : "+ str(B1) +"\n")
+        fichierTest.write("C1 : "+ str(BC1) +"\n")
+        fichierTest.write("m2 : "+ str(m2) +"\n")
+        fichierTest.write("B2 : "+ str(B2) +"\n")
+        fichierTest.write("C2 : "+ str(C2) +"\n")
+        fichierTest.write("m = m1*m2 : "+ str(m) +"\n")
+        fichierTest.write("B = B1*B2 : "+ str(B) +"\n")
+        fichierTest.write("C = C1*m2 : "+ str(C) +"\n")
+        fichierTest.write("m (Decrypt) : "+ str(mVerif) +"\n\n")
 
 def main ():
     global Iteration
@@ -162,5 +210,6 @@ def main ():
 
     for i in range(100):                    # Itération pour la fonction Homomorphique()
         Homomorphique()                     # Question 6
+        Iteration += 1
     Iteration = 0
 main()

@@ -42,25 +42,29 @@ https://openclassrooms.com/fr/courses/1757741-securisez-vos-donnees-avec-la-cryp
 
 En Python, le module **random** permet de générer ces nombres aléatoires.
 
+---
+
+Pour les questions suivantes, des commentaires permettent d'expliquer le code et où sont exécuter les fonctions en rapport à la question
+
 ###Question 3
 
-Fonction **Euclide()** implémentée avec 10 000 test enregistrés dans le fichier **Euclid.txt
+Fonction **Euclide()** implémentée avec 10 000 test enregistrés dans le fichier **Euclid.txt**
 
 ###Question 4
 
-Fonction **ExpoMod()** implémentée avec 10 000 test enregistrés dans le fichier **ExpoMod.txt
+Fonction **ExpoMod()** implémentée avec 10 000 test enregistrés dans le fichier **ExpoMod.txt**
 
 ###Question 5
 
-Fonction **KeyGen()** implémentée avec 10 000 test enregistrés dans le fichier **KeyGen.txt
+Fonction **KeyGen()** implémentée avec 10 000 test enregistrés dans le fichier **KeyGen.txt**
 
-Fonction **Encrypt()** implémentée avec 10 000 test enregistrés dans le fichier **Encrypt.txt
+Fonction **Encrypt()** implémentée avec 10 000 test enregistrés dans le fichier **Encrypt.txt**
 
-Fonction **Decrypt()** implémentée avec 10 000 test enregistrés dans le fichier **Decrypt.txt
+Fonction **Decrypt()** implémentée avec 10 000 test enregistrés dans le fichier **Decrypt.txt**
 
 ###Question 6
 
-Fonction **Homomorphique()** implémentée avec 10 000 test enregistrés dans le fichier **Homomorphique.txt
+Fonction **Homomorphique()** implémentée avec 10 000 test enregistrés dans le fichier **Homomorphique.txt**
 
 
 
