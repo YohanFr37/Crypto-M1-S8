@@ -142,10 +142,10 @@ def main ():
     for i in range(10000):
         ecriture = True
         a = random.randint(2, p-2)
-        Euclid(a,p,ecriture)
-        ExpMod(g,a,ecriture)
+        Euclid(a,p,ecriture)                # Question 3
+        ExpMod(g,a,ecriture)                # Question 4
     #for i in range(100):
-        if (i%100==0):
+        if (i%100==0):                      # Question 5
             #a = random.randint(2, p-2)
             public = True                   #Definie si les données sont rendues public
             Kp = Keygen(g,p,a,public)       #Kp = (p,g,X)
@@ -159,7 +159,8 @@ def main ():
             ecriture = False
             Iteration += 1
 
+
     for i in range(100):                    # Itération pour la fonction Homomorphique()
-        Homomorphique()
+        Homomorphique()                     # Question 6
     Iteration = 0
 main()
