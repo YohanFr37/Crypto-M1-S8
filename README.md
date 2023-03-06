@@ -12,7 +12,7 @@ Langage utilisé : Python
 ##Configuration
 
 
-Compilation du à la racine du projet : **python3 cryptographie.py**
+Compilation à la racine du projet : **python3 cryptographie.py**
 
 
 ###Question 1
@@ -24,10 +24,9 @@ Nous avons utilisé le langage Python pour réaliser l'entièreté du devoir mai
 _Quelle bibliothèque permettant de gérer des nombres entiers de grande taille allez-vous utiliser ? Quelles sont les oṕerations implémentées dans cette bibliothèque (multiplication, addition,...)_
 
 En python, il n'est pas nécessaire d'utiliser une bibliothèque afin de générer des nombres entier de grande taille puisqu'en Python, il n'y a pas de limite de taille dans les nombres. 
-En revanche, nous avons importer le module **sys** qui nous a permis de modifier le nombre maximal de récursion dans une même fonction et la taille maximum d'une chaîne de caractère pour l'enregister dans les fichiers .txt.
+En revanche, nous avons importer le module **sys** qui nous a permis de modifier le nombre maximal de récursion dans une même fonction
 
 > sys.setrecursionlimit(2048)
-> sys.set_int_max_str_digits(8192)
 
 ###Question 2
 
@@ -44,7 +43,7 @@ En Python, le module **random** permet de générer ces nombres aléatoires.
 
 ---
 
-Pour les questions suivantes, des commentaires permettent d'expliquer le code et où sont exécuter les fonctions en rapport à la question
+Pour les questions suivantes, des commentaires permettent d'expliquer le code et à quel endroit dans le code sont exécutées les fonctions. Chacunes des fonctions enregistreront les données dans les fichiers textes correspondants.
 
 ###Question 3
 

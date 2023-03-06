@@ -2,7 +2,6 @@
 import random
 import sys
 sys.setrecursionlimit(2048)
-sys.set_int_max_str_digits(8192)
 fichier = open("test.txt", "w")
 fichierEuclid = open("Euclid.txt", "w")
 fichierExpMod = open("ExpMod.txt", "w")
